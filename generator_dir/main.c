@@ -7,6 +7,9 @@
 
 #include "generator.h"
 #include "string_utlis.h"
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 int main(int ac, char **av)
 {
@@ -16,5 +19,7 @@ int main(int ac, char **av)
         return (84);
     maze = prepare_maze(av);
     maze = generator(maze, my_getnbr(av[1]), my_getnbr(av[2]));
+    if (strcmp(av[3], "perfect") == 0)
+        print_maze_perfect(maze, my_getnbr(av[2]));
     return (0);
 }

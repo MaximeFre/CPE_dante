@@ -17,7 +17,8 @@ SRC	=	main.c									\
 		src/prepare_maze.c						\
 		src/error_handling.c					\
 		src/move_func.c							\
-		src/generator.c
+		src/generator.c							\
+		src/print_maze.c
 
 OBJ	=	$(SRC:.c=.o)
 

@@ -29,3 +29,4 @@ char **down(char **maze, Vector2i *position, int y);
 char **left(char **maze, Vector2i *position);
 char **right(char **maze, Vector2i *position, int x);
 char **generator(char **maze, int x, int y);
+void print_maze_perfect(char **maze, int y);

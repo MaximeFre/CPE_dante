@@ -16,7 +16,7 @@ int my_strcmp(char const *str1, char const *str2)
         return (-1);
     for (int i = 0; str1[i] != '\0'; i++) {
         if (str1[i] != str2[i])
-            return (84);
+            return (-1);
     }
     return (0);
 }
