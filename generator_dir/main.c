@@ -17,9 +17,17 @@ int main(int ac, char **av)
 
     if (error_handling(ac, av) == 84)
         return (84);
+    if (my_getnbr(av[1]) == 1 && my_getnbr(av[2]) == 1) {
+        printf("*");
+        return (0);
+    }
     maze = prepare_maze(av);
     maze = generator(maze, my_getnbr(av[1]), my_getnbr(av[2]));
-    if (strcmp(av[3], "perfect") == 0)
+    if (ac == 4 && strcmp(av[3], "perfect") == 0)
         print_maze_perfect(maze, my_getnbr(av[2]));
+    else if (ac == 3) {
+        print_maze_imperfect(maze, my_getnbr(av[1]), my_getnbr(av[2]));
+    } else
+        return (84);
     return (0);
 }

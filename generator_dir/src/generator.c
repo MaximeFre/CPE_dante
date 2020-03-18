@@ -11,6 +11,28 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+static char **put_point(char **maze, Vector2i *position, int x, int y)
+{
+    if (position->x < x - 1 && maze[position->y][position->x + 1] == 'P') {
+            maze[position->y][position->x] = '.';
+            maze[position->y][position->x++] = '.';
+    }
+    if (position->x >= 1 && maze[position->y][position->x - 1] == 'P') {
+        maze[position->y][position->x] = '.';
+        maze[position->y][position->x--] = '.';
+    }
+    if (position->y < y - 1 && maze[position->y + 1][position->x] == 'P') {
+        maze[position->y][position->x] = '.';
+        maze[position->y++][position->x] = '.';
+    }
+    if (position->y >= 1 && maze[position->y - 1][position->x] == 'P') {
+        maze[position->y][position->x] = '.';
+        maze[position->y--][position->x] = '.';
+    }
+    maze[position->y][position->x] = '.';
+    return (maze);
+}
+
 static char **go_back(char **maze, Vector2i *position, int x, int y)
 {
     if ((position->x > 1 && maze[position->y][position->x - 2] == '*') ||
@@ -19,23 +41,7 @@ static char **go_back(char **maze, Vector2i *position, int x, int y)
     (position->y > 1 && maze[position->y - 2][position->x] == '*')) {
         return (maze);
     } else {
-        if (position->x < x - 1 && maze[position->y][position->x + 1] == 'P') {
-            maze[position->y][position->x] = '.';
-            maze[position->y][position->x++] = '.';
-        }
-        if (position->x >= 1 && maze[position->y][position->x - 1] == 'P') {
-            maze[position->y][position->x] = '.';
-            maze[position->y][position->x--] = '.';
-        }
-        if (position->y < y - 1 && maze[position->y + 1][position->x] == 'P') {
-            maze[position->y][position->x] = '.';
-            maze[position->y++][position->x] = '.';
-        }
-        if (position->y >= 1 && maze[position->y - 1][position->x] == 'P') {
-            maze[position->y][position->x] = '.';
-            maze[position->y--][position->x] = '.';
-        }
-        maze[position->y][position->x] = '.';
+        maze = put_point(maze, position, x, y);
     }
     return (maze);
 }

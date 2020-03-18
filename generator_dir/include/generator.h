@@ -21,7 +21,6 @@ typedef struct
     int y;
 } Vector2i;
 
-
 int error_handling(int ac, char **av);
 char **prepare_maze(char **av);
 char **up(char **maze, Vector2i *position);
@@ -30,3 +29,4 @@ char **left(char **maze, Vector2i *position);
 char **right(char **maze, Vector2i *position, int x);
 char **generator(char **maze, int x, int y);
 void print_maze_perfect(char **maze, int y);
+void print_maze_imperfect(char **maze, int x, int y);
