@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-CFLAGS	=	-Isolver/include -I../lib/include -Wall
+CFLAGS	=	-Iinclude -I../lib/include -Wall
 LDFLAGS	=	-lm
 
 EXEC	=	solver
@@ -18,10 +18,11 @@ all:	$(EXEC)
 
 $(EXEC):	$(OBJ)
 	gcc -o $(EXEC) $(OBJ) $(LDFLAGS)
-	cp $(EXEC) ../
+	mv $(EXEC) ../
 
 clean:
 	rm -f $(OBJ)
+	rm -f vgcore*
 
 fclean:		clean
 	rm -f $(EXEC)

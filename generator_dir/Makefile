@@ -5,12 +5,19 @@
 ## Makefile
 ##
 
-CFLAGS	=	-Igenerator/include -I../lib/include -Wall
-LDFLAGS	=	-lm
+CFLAGS	=	-g -Iinclude -I../lib/include -Wall
+LDFLAGS	+=	-lm
 
 EXEC	=	generator
 
-SRC	=	main.c
+SRC	=	main.c									\
+		../lib/src/my_strlen.c					\
+		../lib/src/my_strcmp.c					\
+		../lib/src/my_getnbr.c					\
+		src/prepare_maze.c						\
+		src/error_handling.c					\
+		src/move_func.c							\
+		src/generator.c
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -18,10 +25,11 @@ all:	$(EXEC)
 
 $(EXEC):	$(OBJ)
 	gcc -o $(EXEC) $(OBJ) $(LDFLAGS)
-	cp $(EXEC) ../
+	mv $(EXEC) ../
 
 clean:
 	rm -f $(OBJ)
+	rm -f vgcore*
 
 fclean:		clean
 	rm -f $(EXEC)

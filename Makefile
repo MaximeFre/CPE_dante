@@ -12,10 +12,9 @@ all:
 clean:
 	(cd solver_dir ; make clean)
 	(cd generator_dir ; make clean)
-	rm -f generator
-	rm -f solver
+	rm -f vgcore*
 
-fclean:
+fclean:		clean
 	(cd solver_dir ; make fclean)
 	(cd generator_dir ; make fclean)
 	rm -f generator
@@ -23,4 +22,10 @@ fclean:
 
 re:
 	(cd solver_dir ; make re)
+	(cd generator_dir ; make re)
+
+solver:
+	(cd solver_dir ; make re)
+
+generator:
 	(cd generator_dir ; make re)

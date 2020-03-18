@@ -1,0 +1,4 @@
+vgcore*
+generator
+solver
+*.o
