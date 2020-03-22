@@ -6,26 +6,24 @@
 ##
 
 all:
-	(cd solver_dir ; make)
-	(cd generator_dir ; make)
+	(cd solver ; make)
+	(cd generator ; make)
 
 clean:
-	(cd solver_dir ; make clean)
-	(cd generator_dir ; make clean)
+	(cd solver ; make clean)
+	(cd generator ; make clean)
 	rm -f vgcore*
 
 fclean:		clean
-	(cd solver_dir ; make fclean)
-	(cd generator_dir ; make fclean)
-	rm -f generator
-	rm -f solver
+	(cd solver ; make fclean)
+	(cd generator ; make fclean)
 
 re:
-	(cd solver_dir ; make re)
-	(cd generator_dir ; make re)
+	(cd solver ; make re)
+	(cd generator ; make re)
 
 solver:
-	(cd solver_dir ; make re)
+	(cd solver ; make re)
 
 generator:
-	(cd generator_dir ; make re)
+	(cd generator ; make re)
