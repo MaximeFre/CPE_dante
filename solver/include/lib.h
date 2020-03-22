@@ -17,3 +17,4 @@ void check_end(map_t *map);
 void move_map(map_t *map);
 int count_two(map_t *map);
 void go_random_two(map_t *map, int nb);
+void random_two(map_t *map, int random, int count);

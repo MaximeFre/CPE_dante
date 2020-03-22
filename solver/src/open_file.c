@@ -23,7 +23,6 @@ void find_info(map_t *map, char *file)
         if (file[a] == '\n')
             map->max_y++;
     }
-    map->max_y--;
 }
 
 void str_to_arr(char *file, map_t *map)

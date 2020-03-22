@@ -26,36 +26,28 @@ int path(map_t *map)
 
 void go_back(map_t *map)
 {
-    map->map[map->y][map->x] = '2';
-    if (map->left == 2) {
-        map->x -= 1;
-        return;
-    } if (map->right == 2) {
-        map->x += 1;
-        return;
-    } if (map->up == 2) {
-        map->y -= 1;
-        return;
-    } if (map->bot == 2) {
-        map->y += 1;
-        return;
-    }
-    go_random_two(map, count_two(map));
+    list_t *tmp = map->list;
+    list_t *tempo = map->list->prev;
+
+    map->map[map->list->y][map->list->x] = '2';
+    map->list = map->list->prev->prev;
+    free(tmp);
+    free(tempo);
 }
 
 void go_here(map_t *map)
 {
     if (map->left == 1) {
-        map->x -= 1;
+        map->list->x -= 1;
         return;
     } if (map->right == 1) {
-        map->x += 1;
+        map->list->x += 1;
         return;
     } if (map->up == 1) {
-        map->y -= 1;
+        map->list->y -= 1;
         return;
     } if (map->bot == 1) {
-        map->y += 1;
+        map->list->y += 1;
         return;
     }
 }
@@ -67,24 +59,16 @@ void go_random(map_t *map, int nb)
     int count = 0;
 
     if (map->left == 1 && random == count) {
-        map->x -= 1;
+        map->list->x -= 1;
         return;
     } else if (map->left == 1) {
         count++;
     } if (map->right == 1 && random == count) {
-        map->x += 1;
+        map->list->x += 1;
         return;
-    } else if (map->right == 1) {
+    } else if (map->right == 1)
         count++;
-    } if (map->up == 1 && random == count) {
-        map->y -= 1;
-        return;
-    } else if (map->up == 1) {
-        count++;
-    } if (map->bot == 1 && random == count) {
-        map->y += 1;
-        return;
-    }
+    random_two(map, random, count);
 }
 
 void move_map(map_t *map)

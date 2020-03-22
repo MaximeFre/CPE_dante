@@ -12,8 +12,10 @@
 void init_struct(map_t *map)
 {
     map->end = 0;
-    map->x = 0;
-    map->y = 0;
+    map->list = malloc(sizeof(list_t));
+    map->list->x = 0;
+    map->list->y = 0;
+    map->list->prev = NULL;
     map->left = 0;
     map->right = 0;
     map->up = 0;
