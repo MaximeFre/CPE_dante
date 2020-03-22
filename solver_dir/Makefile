@@ -10,14 +10,19 @@ LDFLAGS	=	-lm
 
 EXEC	=	solver
 
-SRC	=	main.c
+SRC	=	main.c		\
+		open_file.c	\
+		solve.c		\
+		check.c		\
+		end.c		\
+		move.c		\
 
 OBJ		=	$(SRC:.c=.o)
 
 all:	$(EXEC)
 
 $(EXEC):	$(OBJ)
-	gcc -o $(EXEC) $(OBJ) $(LDFLAGS)
+	gcc -g -o $(EXEC) $(OBJ) $(LDFLAGS)
 	mv $(EXEC) ../
 
 clean:
