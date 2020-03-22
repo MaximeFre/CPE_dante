@@ -10,6 +10,7 @@
 
 void print_map(map_t *map)
 {
+<<<<<<< HEAD
     map->map[map->max_y][map->max_x] = '1';
     for (int i = 0; map->map[i]; i++) {
         for (int a = 0; map->map[i][a]; a++) {
@@ -33,6 +34,10 @@ void create_node(map_t *map)
     tmp->y = map->list->y;
     tmp->prev = map->list;
     map->list = tmp;
+=======
+    for (int i = 0; map->map[i]; i++)
+        printf("%s\n", map->map[i]);
+>>>>>>> 0cd1f981ae559d97b3b89076e73107cc6bbabf94
 }
 
 void solve(map_t *map)
