@@ -46,7 +46,7 @@ void solve(map_t *map)
         check_end(map);
     }
     if (map->end == 1) {
-        printf("No Solution\n");
+        printf("no solution found\n");
     } else {
         print_map(map);
     }
