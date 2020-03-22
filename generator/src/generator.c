@@ -55,11 +55,11 @@ static char **update(char **maze, Vector2i *size)
         tmp = rand() % 4;
         if (tmp == UP)
             maze = up(maze, &position);
-        else if (tmp == DOWN)
+        if (tmp == DOWN)
             maze = down(maze, &position, size->y);
-        else if (tmp == LEFT)
+        if (tmp == LEFT)
             maze = left(maze, &position);
-        else if (tmp == RIGHT)
+        if (tmp == RIGHT)
             maze = right(maze, &position, size->x);
         go_back(maze, &position, size->x, size->y);
     }

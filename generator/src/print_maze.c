@@ -44,7 +44,7 @@ static char **change_wall(char **maze, int y)
 
     number = init(number, y);
     for (int i = 0; maze[i] != NULL; i++) {
-        for(int j = 0; maze[i][j] != '\0'; j++) {
+        for (int j = 0; maze[i][j] != '\0'; j++) {
             if (maze[i][j] == 'X') {
                 number[i] += 1;
             }

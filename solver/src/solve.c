@@ -11,7 +11,7 @@
 void print_map(map_t *map)
 {
     for (int i = 0; map->map[i]; i++)
-        printf("%s\n",map->map[i]);
+        printf("%s\n", map->map[i]);
 }
 
 void solve(map_t *map)
