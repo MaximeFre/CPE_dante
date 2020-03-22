@@ -11,6 +11,50 @@
 #include <unistd.h>
 #include <string.h>
 
+static int *init(int *number, int y)
+{
+    for (int i = 0; i < y; i++)
+        number[i] = 0;
+    return (number);
+}
+
+static char **replace(char **maze, int *number)
+{
+    int tmp = 0;
+    int count = 0;
+
+    for (int i = 0; maze[i] != NULL; i++) {
+        if (number[i] > 0)
+            tmp = rand() % number[i] - 1;
+        for (int j = 0; maze[i][j] != '\0'; j++) {
+            if (maze[i][j] == 'X')
+                count++;
+            if (count == tmp + 1)
+                maze[i][j] = '*';
+        }
+        count = 0;
+    }
+    return maze;
+}
+
+
+static char **change_wall(char **maze, int y)
+{
+    int *number = malloc(sizeof(int) * y);
+
+    number = init(number, y);
+    for (int i = 0; maze[i] != NULL; i++) {
+        for(int j = 0; maze[i][j] != '\0'; j++) {
+            if (maze[i][j] == 'X') {
+                number[i] += 1;
+            }
+        }
+    }
+    maze = replace(maze, number);
+    free(number);
+    return maze;
+}
+
 void print_maze_perfect(char **maze, int y)
 {
     for (int i = 0; maze[i] != NULL; i++) {
@@ -26,14 +70,7 @@ void print_maze_perfect(char **maze, int y)
 
 void print_maze_imperfect(char **maze, int x, int y)
 {
-    int tmp;
-
-    if (y - 1 > 0)
-        tmp = rand() % (y - 1) + 1;
-    if (y > 2){
-        srand(time(NULL));
-        memset(maze[tmp - 1], '*', x);
-    }
+    maze = change_wall(maze, y);
     for (int i = 0; maze[i] != NULL; i++) {
         for (int j = 0; maze[i][j] != '\0'; j++) {
             if (maze[i][j] == 'P' || maze[i][j] == '.')

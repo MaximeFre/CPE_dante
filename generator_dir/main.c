@@ -11,6 +11,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+static void free_maze(char **maze)
+{
+    for (int i = 0; maze[i] != NULL; i++)
+        free(maze[i]);
+    free(maze);
+}
+
 int main(int ac, char **av)
 {
     char **maze;
@@ -29,5 +36,6 @@ int main(int ac, char **av)
         print_maze_imperfect(maze, my_getnbr(av[1]), my_getnbr(av[2]));
     } else
         return (84);
+    free_maze(maze);
     return (0);
 }
